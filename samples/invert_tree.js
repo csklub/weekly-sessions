@@ -57,7 +57,7 @@ function swap(node1, node2) {
 }
 
 function invertTree(node) {
-    while (node) {
+    if (node) {
         if (node.left || node.right) {
             swap(node.left, node.right);
             invertTree(node.left);
