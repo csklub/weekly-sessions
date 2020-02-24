@@ -25,7 +25,3 @@ t.insertNode(23)
 t.insertNode(30)
 // invertTree(t.root)
 t.traverse()
-
-
-// TODO: check out the actual interface
-// for Tree ADT (abstract data type)
