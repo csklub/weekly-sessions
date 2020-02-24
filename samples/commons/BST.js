@@ -25,7 +25,6 @@ class Tree {
     }
 
     insertNode(key) {
-
         function _insertNode(node) {
             if (key == node.key) return
             if (key > node.key) {
@@ -60,15 +59,13 @@ class Tree {
             }
             if (node && node.right) _trav(node.right)
         }
-
-        console.log(`starting traversal at root: ${this.root.key}`)
         _trav(this.root)
     }
-
-    
-
 }
 
 module.exports = {
     Tree,
 }
+
+// TODO: check out the actual interface
+// for Tree ADT (abstract data type)
