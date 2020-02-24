@@ -25,30 +25,26 @@ class Tree {
     }
 
     insertNode(key) {
-        const newNode = new Node(key)
+
+        function _insertNode(node) {
+            if (key == node.key) return
+            if (key > node.key) {
+                // goes to the right
+                if (node.right) _insertNode(node.right)
+                else node.right = new Node(key)
+            }
+            else {
+                // goes to the left
+                if (node.left) _insertNode(node.left)
+                else node.left = new Node(key)
+            }
+        }
+
         if (this.root == null) {
-            this.root = newNode
+            this.root = new Node(key)
             return
         }
-        let node = this.root
-        while (node) {
-            if (key > node.key) {
-                if (node.right) node = node.right
-                else {
-                    node.right = newNode
-                    return
-                }
-            }
-            else if (key < node.key) {
-                if (node.left) node = node.left
-                else {
-                    node.left = newNode
-                    return
-                }
-            }
-            else return
-            // if == , no insertion
-        }
+        else _insertNode(this.root)
     }
 
     traverse() {
