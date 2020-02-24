@@ -1,6 +1,5 @@
 const { Tree } = require('./commons/BST')
 
-
 function swap(node1, node2) {
     const temp = node1
     node1 = node2
@@ -21,6 +20,7 @@ function invertTree(node) {
 
 // tests
 <<<<<<< HEAD
+<<<<<<< HEAD
 let arr = [5, 20, 5, 3, 4, 10, 12, 2, 9, 25 ]
 let t = new Tree(arr)
 t.insertNode(23)
@@ -29,5 +29,11 @@ t.insertNode(30)
 let arr = [5, 20, 3, 4, 10, 12, 2, 9, 25 ]
 let t = new Tree(arr)
 >>>>>>> wip: created a basic BST
+=======
+let arr = [5, 20, 5, 3, 4, 10, 12, 2, 9, 25 ]
+let t = new Tree(arr)
+t.insertNode(23)
+t.insertNode(30)
+>>>>>>> wip: minor refactors
 // invertTree(t.root)
 t.traverse()

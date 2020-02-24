@@ -25,25 +25,30 @@ class Tree {
     }
 
     insertNode(key) {
-        function _insertNode(node) {
-            if (key == node.key) return
-            if (key > node.key) {
-                // goes to the right
-                if (node.right) _insertNode(node.right)
-                else node.right = new Node(key)
-            }
-            else {
-                // goes to the left
-                if (node.left) _insertNode(node.left)
-                else node.left = new Node(key)
-            }
-        }
-
+        const newNode = new Node(key)
         if (this.root == null) {
-            this.root = new Node(key)
+            this.root = newNode
             return
         }
-        else _insertNode(this.root)
+        let node = this.root
+        while (node) {
+            if (key > node.key) {
+                if (node.right) node = node.right
+                else {
+                    node.right = newNode
+                    return
+                }
+            }
+            else if (key < node.key) {
+                if (node.left) node = node.left
+                else {
+                    node.left = newNode
+                    return
+                }
+            }
+            else return
+            // if == , no insertion
+        }
     }
 
     traverse() {
@@ -59,13 +64,15 @@ class Tree {
             }
             if (node && node.right) _trav(node.right)
         }
+
+        console.log(`starting traversal at root: ${this.root.key}`)
         _trav(this.root)
     }
+
+    
+
 }
 
 module.exports = {
     Tree,
 }
-
-// TODO: check out the actual interface
-// for Tree ADT (abstract data type)
