@@ -20,7 +20,8 @@ function invertTree(node) {
 
 // tests
 let arr = [5, 20, 5, 3, 4, 10, 12, 2, 9, 25 ]
-let t = new Tree(arr)
+let t = new Tree()
+t.fromArray(arr)
 t.insertNode(23)
 t.insertNode(30)
 // invertTree(t.root)

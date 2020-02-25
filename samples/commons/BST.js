@@ -14,12 +14,13 @@ class Node {
 class Tree {
     // we will construct a non-balanced
     // tree
-    constructor(arr) {
+    constructor() {
         // create the root
-        if (!(Array.isArray(arr) && arr.length > 0)) {
-            this.root = null
-            return
-        }
+        this.root = null
+    }
+
+    fromArray(arr) {
+        // create a BST from an array
         for (let i = 0; i < arr.length; i++) {
             this.insertNode(arr[i]);
         }
