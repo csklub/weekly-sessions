@@ -3,6 +3,7 @@ class Node {
         this.key = key
         this.left = null
         this.right = null
+        this.parent = null
     }
 }
 
@@ -25,17 +26,24 @@ class Tree {
     }
 
     insertNode(key) {
+        function _add(node, side) {
+            // side <= { left, right }
+            const newNode = new Node(key)
+            node[side] = newNode
+            newNode.parent = node
+        }
+    
         function _insertNode(node) {
             if (key == node.key) return
             if (key > node.key) {
                 // goes to the right
                 if (node.right) _insertNode(node.right)
-                else node.right = new Node(key)
+                else _add(node, 'right')
             }
             else {
                 // goes to the left
                 if (node.left) _insertNode(node.left)
-                else node.left = new Node(key)
+                else _add(node, 'left')
             }
         }
 
