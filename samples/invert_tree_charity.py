@@ -36,6 +36,9 @@ class Tree:
         Insert function will insert a node into tree.
         Duplicate keys are not allowed.
         """
+        if self.root == None:
+            self.root = self.createNode(data)
+            return
         return self.insertHelper(self.root, data)
 
     def insertHelper(self, node, data):
