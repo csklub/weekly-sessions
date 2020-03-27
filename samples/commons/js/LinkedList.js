@@ -89,6 +89,22 @@ class LinkedList {
 
         return arr;
     }
+
+    appendNode(node) {
+        if (node) {
+            if (!this.head) {
+                this.head = node;
+                this.tail = node;
+            }
+            else {
+                this.tail.next = node;
+                this.tail = node;
+            }
+        }
+    }
 }
 
-module.exports = LinkedList;
+module.exports = {
+    LinkedList,
+    Node,
+};
