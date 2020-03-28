@@ -53,6 +53,6 @@ for (let elem of [1, 2, 4, 7, 10]) {
     l.append(elem);
 }
 
-console.log(l._toArray());
+console.log(l._toArray()); // [ 1, 2, 4, 7, 10 ]
 swapLinkedList(l);
-console.log(l._toArray());
+console.log(l._toArray()); // [ 2, 1, 7, 4, 10 ]
