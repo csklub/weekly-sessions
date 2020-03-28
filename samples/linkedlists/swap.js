@@ -22,8 +22,8 @@ function swapLinkedList(list) {
         cur.next = prev;
     }
 
-    if (!list.head) return;
-    if (!list.head.next) return;
+    // the list must have at least 2 items
+    if (!list.head || !list.head.next) return;
 
     let cur = list.head.next;
     let prev = list.head
@@ -35,7 +35,6 @@ function swapLinkedList(list) {
         let temp = cur;
         cur = prev;
         prev = temp;
-        // console.log(prev.value, cur.value);
         // move to the next pair if available
         if (cur.next && cur.next.next) {
             prevCur = cur;
