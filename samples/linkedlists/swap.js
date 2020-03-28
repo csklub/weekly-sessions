@@ -10,51 +10,49 @@ Given 1->2->3->4,
 you should return the list as 2->1->4->3.
 ```
 */
-const { LinkedList, Node } = require("../commons/js/LinkedList");
+const LinkedList = require("../commons/js/LinkedList");
 
-// create sample linked list
+// fresh take
+
+function swapLinkedList(list) {
+    function _swap(prevCur, prev, cur) {
+        if (prevCur == null) list.head = cur;
+        else prevCur.next = cur;
+        prev.next = cur.next;
+        cur.next = prev;
+    }
+
+    if (!list.head) return;
+    if (!list.head.next) return;
+
+    let cur = list.head.next;
+    let prev = list.head
+    let prevCur = null;
+
+    while (cur) {
+        _swap(prevCur, prev, cur);
+        // recalibrate prev, cur
+        let temp = cur;
+        cur = prev;
+        prev = temp;
+        // console.log(prev.value, cur.value);
+        // move to the next pair if available
+        if (cur.next && cur.next.next) {
+            prevCur = cur;
+            prev = cur.next;
+            cur = cur.next.next;
+        }
+        else return;
+    }
+}
+
+// test
 let l = new LinkedList();
 
-for (let elem of [4, 7, 1, 2]) {
+for (let elem of [1, 2, 4, 7, 10]) {
     l.append(elem);
 }
 
 console.log(l._toArray());
-
-// assuming a list of at least 2 items
-
-function createListOfTwo(node1, node2) {
-    // create the list and swap it already
-    let l = new LinkedList();
-    l.appendNode(node2);
-    l.appendNode(node1);
-    node1.next = null;
-
-    return l;
-}
-
-function joinList(l1, l2) {
-    l1.tail.next = l2.head;
-    l1.tail = l2.tail;
-
-    return l1;
-}
-
-// test
-
-// firt iteration
-let cur = l.head.next;
-let prev = l.head;
-let nextPrev = prev.next.next;
-
-let newList = createListOfTwo(prev, cur);
-console.log("swapped:", newList._toArray());
-
-// second iteration
-cur = nextPrev.next;
-prev = nextPrev;
-
-let newList2 = createListOfTwo(prev, cur);
-let finalList = joinList(newList, newList2);
-
-console.log(finalList._toArray());
+swapLinkedList(l);
+console.log(l._toArray());
