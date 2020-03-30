@@ -29,7 +29,7 @@ class LinkedList {
         this.head = null;
         this.tail = null;
         // initiate size of list to 0
-        this.sizeOfList = 0;
+        this._size = 0;
     }
 
     append(value) {
@@ -43,14 +43,14 @@ class LinkedList {
             this.tail.next = node;
             this.tail = node;
         }
-        this.sizeOfList++;
+        this._size++;
     }
 
     prepend(value) {
         let node = new Node(value);
         node.next = this.head;
         this.head = node;
-        this.sizeOfList++;
+        this._size++;
     }
 
     pop() {
@@ -68,7 +68,7 @@ class LinkedList {
         let last = this.tail;
         this.tail = it;
         this.tail.next = null;
-        this.sizeOfList--;
+        this._size--;
         return last;
     }
 
@@ -79,21 +79,30 @@ class LinkedList {
             first.next = null;
         }
         else this.head = null;
-        this.sizeOfList--;
+        this._size--;
         return first;
     }
 
     insertAt(value, index) {
-        if (index > 0 && index > this.sizeOfList) {
+        if (index < 0 || index > this._size) {
             return false;
         } else {
             const node = new Node(value);
-            let curr, prev;
-            curr = this.head;
-            if (index === 0) {
-                node.next = this.head;
-                this.head = node;
+            if (index === this._size) {
+                /**
+                 * we could use .append() -> but this is more clarifying
+                 * NB: if .append() is used, then, this._size++, 
+                 * should be inside prev {} -> since .append() has its this._size++
+                 */
+                if (!this.head) {
+                    this.head = node;
+                    this.tail = node;
+                } else {
+                    this.tail.next = node;
+                    this.tail = node;
+                }
             } else {
+                let curr, prev;
                 curr = this.head;
                 let initialIndex = 0;
                 while (initialIndex < index) {
@@ -104,12 +113,12 @@ class LinkedList {
                 node.next = curr;
                 prev.next = node;
             }
-            this.sizeOfList++;
+            this._size++;
         }
     }
 
     removeAt(index) {
-        if (index > 0 && index > this.sizeOfList) {
+        if (index < 0 && index > this._size) {
             return false;
         } else {
             let curr, prev;
@@ -126,7 +135,7 @@ class LinkedList {
                 }
                 prev.next = curr.next;
             }
-            this.sizeOfList--;
+            this._size--;
         }
     }
 
@@ -139,11 +148,11 @@ class LinkedList {
     }
 
     size() {
-        return this.sizeOfList;
+        return this._size;
     }
 
     isEmpty() {
-        return this.sizeOfList === 0;
+        return this._size === 0;
     }
 
     _toArray() {
