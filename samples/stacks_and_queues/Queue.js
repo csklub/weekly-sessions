@@ -69,6 +69,7 @@ Queue.prototype.remove = Queue.prototype.dequeue;
 module.exports = Queue;
 
 /* TEST */
+/*
 var q = new Queue();
 q.add('a');
 q.add('b');
@@ -80,3 +81,4 @@ console.log(q.remove(), 'b');
 console.log(q.remove(), 'c');
 console.log(q.isEmpty(), true);
 console.log(q._toArray());
+*/
