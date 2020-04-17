@@ -6,22 +6,25 @@ function islandCount(M) {
     // we will traverse the matrix M
     // in a BFS manner
 
-
     let q = new Q();
     let count = 0;
     const cols = M[0].length;
     const rows = M.length;
 
-    for (let r = 0; r < rows; r++)
-        for (let c = 0; c < cols; c++)
-            visitCell(r, c);
-
-    function visitCell(row, col) {
-        if (M[row][col] == 1) {
-            q.enqueue([row, col]);
-            // this is an island
-            count++;
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (M[r][c] == 1) {
+                // this is an island
+                count++;
+                // visit neighbours
+                // itself included
+                visitCells(r, c);
+            }
         }
+    }
+
+    function visitCells(row, col) {
+        q.enqueue([row, col]);
     
         while (!q.isEmpty()) {
             let [ r, c ] = q.dequeue();
