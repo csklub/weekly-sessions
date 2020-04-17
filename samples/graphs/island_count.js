@@ -49,4 +49,4 @@ let m = [
     [ 0, 1, 1, 0 ]
 ]
 
-console.log(islandCount(m), "|", 7);
+console.log(islandCount(m), "|", 6);
