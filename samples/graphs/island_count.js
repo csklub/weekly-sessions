@@ -6,7 +6,6 @@ function islandCount(M) {
     // we will traverse the matrix M
     // in a BFS manner
 
-    let q = new Q();
     let count = 0;
     const cols = M[0].length;
     const rows = M.length;
@@ -18,12 +17,13 @@ function islandCount(M) {
                 count++;
                 // visit neighbours
                 // itself included
-                visitCells(r, c);
+                visitCells(r, c, M);
             }
         }
     }
 
-    function visitCells(row, col) {
+    function visitCells(row, col, M) {
+        let q = new Q();
         q.enqueue([row, col]);
     
         while (!q.isEmpty()) {
