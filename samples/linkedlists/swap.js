@@ -10,7 +10,7 @@ Given 1->2->3->4,
 you should return the list as 2->1->4->3.
 ```
 */
-const LinkedList = require("../commons/js/LinkedList");
+const SinglyLinkedList = require("../commons/js/SinglyLinkedList");
 
 // fresh take
 /*
@@ -75,7 +75,7 @@ function swapLinkedList(list) {
 // test
 // quick helper function
 function listFromArray(arr) {
-    let list = new LinkedList();
+    let list = new SinglyLinkedList();
     for (let elem of arr) {
         list.append(elem);
     }
