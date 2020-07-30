@@ -1,5 +1,5 @@
 // simple implementation of a stack 
-// using an Array
+// using WeakMap (Immutable)
 
 /*
 Interface:
@@ -9,34 +9,41 @@ Interface:
 - isEmpty()
 - size()
 */
+const data = new WeakMap()
 class Stack {
   constructor() {
-    this._data = [];
+    data.set(this, [])
   }
 
   size() {
-    return this._data.length;
+    const result = data.get(this)
+    return result.length
   }
 
   isEmpty() {
-    return this.size() == 0;
+    return this.size() == 0
   }
 
   push(value) {
-    this._data.push(value);
+    const result = data.get(this)
+    result.push(value)
   }
 
   pop() {
-    return this._data.pop();
+    const s = data.get(this)
+    const result = s.pop()
+    return result
   }
 
   peek() {
-    if (this.isEmpty()) return null;
-    return this._data[this.size() - 1];
+    if (this.isEmpty()) return null
+    const result = data.get(this)
+    return result[this.size() - 1]
   }
 
   _toArray() {
-    return this._data;
+    const result = data.get(this)
+    return result
   }
 }
 
