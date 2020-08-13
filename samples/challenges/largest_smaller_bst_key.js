@@ -42,3 +42,6 @@ bst.fromArray(arr)
 // bst.traverse()
 
 console.log(largestSmallerKey(bst, 17)) // 16
+console.log(largestSmallerKey(bst, 5)) // -1
+console.log(largestSmallerKey(bst, 30)) // 25
+console.log(largestSmallerKey(bst, 23)) // 20
