@@ -270,7 +270,7 @@ class BST:
         else:
             return []
     
- # create a bst from a given list.
+    # create a bst from a given list.
     def create_bst_from_list(self, bst_list: list):
         for item in bst_list:
             self.put(bst_list.index(item), item)
