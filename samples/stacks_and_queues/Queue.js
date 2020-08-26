@@ -69,14 +69,16 @@ Queue.prototype.remove = Queue.prototype.dequeue;
 module.exports = Queue;
 
 /* TEST */
-// var q = new Queue();
-// q.add('a');
-// q.add('b');
-// q.add('c');
-// console.log(q._toArray());
-// console.log(q.remove(), 'a');
-// console.log(q.peek(), 'b');
-// console.log(q.remove(), 'b');
-// console.log(q.remove(), 'c');
-// console.log(q.isEmpty(), true);
-// console.log(q._toArray());
+/*
+var q = new Queue();
+q.add('a');
+q.add('b');
+q.add('c');
+console.log(q._toArray());
+console.log(q.remove(), 'a');
+console.log(q.peek(), 'b');
+console.log(q.remove(), 'b');
+console.log(q.remove(), 'c');
+console.log(q.isEmpty(), true);
+console.log(q._toArray());
+*/
