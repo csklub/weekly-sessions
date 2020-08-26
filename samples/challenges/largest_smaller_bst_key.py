@@ -37,8 +37,6 @@ def largest_smaller_key(tree: bst, num):
             node = node.left_child
     return smaller
 
-    # print(node)
-
 
 # Helper code for tests.
 let_arr = [20, 9, 25, 5, 12, 11, 14, 18, 19]
@@ -52,6 +50,6 @@ my_bst.create_bst_from_list(let_arr)
 # largest = largest_smaller_key(my_bst, 20)  # 19
 # largest = largest_smaller_key(my_bst, 5)  # -1
 # largest = largest_smaller_key(my_bst, 17)  # 14
-largest = largest_smaller_key(my_bst, 23)  # 20
-# largest = largest_smaller_key(my_bst, 30)  # 25
+# largest = largest_smaller_key(my_bst, 23)  # 20
+largest = largest_smaller_key(my_bst, 30)  # 25
 print(f'The largest of the smallest is: {largest}')
